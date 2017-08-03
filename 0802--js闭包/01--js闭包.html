@@ -1,0 +1,85 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>01--js闭包</title>
+
+
+
+</head>
+
+<body>
+    <p>第一行</p>
+    <p>第二行</p>
+    <p>第三行</p>
+    <script type="text/javascript">
+        /*错误示范
+        * 当页面加载完成之后就调用addHander函数，
+        * 这时候node上绑定的点击处理事件函数并没有被调用，
+        * 所以，当for循环完成之后i=3，所以点击节点时，调用匿名函数弹出3
+        * */
+        /*function addHandler(nodes){
+            for ( var i=0;i<nodes.length;i++) {
+                var node=nodes[i];
+                node.onclick=function(){
+                    alert(i);//3 3 3
+                }
+            }
+        }
+
+        var nodes=document.getElementsByTagName("p");
+        addHander( nodes);*/
+
+        function addHandler(nodes) {
+            function invoke(i) {
+                //return function () {//闭包
+                    alert(i+1);
+                //}
+            }
+            for (var i=0;i<nodes.length;i++){
+                var node=nodes[i];
+                node.onclick=invoke(i);
+            }
+        }
+        var nodes=document.getElementsByTagName("p");
+        addHandler( nodes);
+
+
+
+
+        /*function addHandler(nodes){
+            for ( var i=0;i<nodes.length;i++) {
+                var node=nodes[i];
+                node.onclick=(function(j){
+                   return function () {
+                       alert(j+1);
+                   };
+                })(i);
+            }
+        }
+
+        var nodes=document.getElementsByTagName("p");
+        addHander( nodes);//nodes为一个object*/
+
+
+
+        /*function f1(){
+            var a=1;//
+            f2();
+        }
+        //当f2函数在这里声明时，它访问的作用域是自身和全局，f1中的a访问不到
+        function f2(){
+            return a;
+        }
+        document.write(  f2() );*/
+//        function f1(){
+//            var a=1;//
+//            function f2(){
+//                return a;
+//            }
+//            return f2();
+//        }
+//        document.write(  f1() );
+    </script>
+</body>
+</html>

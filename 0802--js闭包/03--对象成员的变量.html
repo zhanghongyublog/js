@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>03--对象成员的变量</title>
+
+
+
+</head>
+
+<body>
+
+    <script type="text/javascript">
+        var person={
+            name:'zhy',
+            age:18
+        }
+        showInfoObj(person);
+        //添加成员变量
+        //属性
+        person.sex='female';
+        //方法
+        person.showInfo=function () {
+            showInfoObj(this);
+        }
+        person.showInfo();
+        function showInfoObj(obj) {
+            for(var key in obj){
+                document.write(key+':'+obj[key]+'\t');
+            }
+            document.write('<hr />');
+        }
+
+
+    </script>
+</body>
+</html>

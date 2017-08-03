@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>02--js闭包</title>
+
+
+
+</head>
+
+<body>
+
+    <script type="text/javascript">
+        function f(){
+            var a=[];
+            function inner(j) {
+                return function () {
+                    return j*2;
+                }
+            }
+            for ( var i=0;i<3;i++) {
+                a[i]=inner(i+1);
+            }
+            return a;
+        }
+        var result=f();
+        document.write(  result[0]()+"<br />"+result[1]()+"<br />"+result[2]());
+    </script>
+</body>
+</html>

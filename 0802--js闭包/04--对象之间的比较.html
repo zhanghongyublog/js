@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>04--对象之间的比较</title>
+
+
+
+</head>
+
+<body>
+
+    <script type="text/javascript">
+        Object.prototype.equals=function(  obj){
+            var result=false;
+            var msg;
+            var obj={
+                result:false,
+                msg:null
+            };
+            //如果对象不存在
+            if(!obj){
+                return obj.msg
+            }
+            //如果参数是空对象
+            for ( var key in obj) {
+                if (!obj[key] || !this[key] || obj[key]!==this[key]) {
+                    obj.result=false;
+                    obj.msg='参数是空对象';
+                    return obj.msg
+                }
+            }
+            //如果当前对象是空对象
+            for ( var key in this) {
+                if (!obj[key] || !this[key] || obj[key]!==this[key]) {
+                    obj.result=false;
+                    obj.msg='参数是空对象';
+                    return obj.msg
+                }
+            }
+            obj.result=true;
+            obj.msg='参数是空对象';
+            return obj.msg;
+        }
+        var a={name:'zhy',age:20};
+        var b={name:'smith',age:21};
+
+        //document.write(  (a==b)+"<br />");//false   使用==比，比的是地址
+
+        document.write(  a.equals(b)+"<br />" );
+
+    </script>
+</body>
+</html>

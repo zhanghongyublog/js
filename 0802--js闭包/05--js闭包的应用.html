@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>05--js闭包的应用</title>
+
+
+
+</head>
+
+<body>
+
+    <script type="text/javascript">
+        /*var arr=['apple','pear','banner'];
+        var innerArray=new Array();
+        for(var i=0;i<arr.length;i++){
+            var item=arr[i];
+            innerArray[i]=function () {
+                document.write(item+'<br/>')
+            }
+        }
+        for (var j=0;j<innerArray.length;j++){
+            innerArray[j]();
+        }*/
+
+        //改进
+        /*var arr=['apple','pear','banner'];
+        var innerArray=new Array();
+        for(var i=0;i<arr.length;i++){
+            var item=arr[i];
+            innerArray[i]=showInfo(item);
+        }
+        function showInfo(item) {
+           return function () {
+               document.write(item+'<br/>');
+           }
+
+        }
+        for (var j=0;j<innerArray.length;j++){
+            innerArray[j]();
+        }*/
+
+
+        var arr=['apple','pear','banner'];
+        var innerArray=new Array();
+        for(var i=0;i<arr.length;i++){
+            var item=arr[i];
+            innerArray[i]=(function (item) {
+                return function () {
+                    document.write(item+'<br/>');
+                }
+            })(item)
+        }
+
+        for (var j=0;j<innerArray.length;j++){
+            innerArray[j]();
+        }
+
+
+    </script>
+</body>
+</html>
