@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>04--prototype缺点</title>
+</head>
+<body>
+    <script typeof="text/javascript">
+
+        function Person() {}
+        Person.prototype={
+            constructor:Person,
+            name:'zhy',
+            age:29,
+            job:'SE',
+            /*frends:['zs','ls'],*/
+            frends:"123",
+            sayName:function () {
+                alert(this.name);
+            }
+        }
+        var p1=new Person();
+        var p2=new Person();
+
+
+        p1.frends='12345';
+        console.log('p1: '+p1.frends + '\t   p2:'+p2.frends  );//   p1: 12345	   p2:zs,ls
+
+        //p1.frends.push('1111');
+        p1.frends.zzz='000';
+        //console.log('p1: '+p1.frends.zzz + '\t   p2:'+p2.frends.zzz  );//   p1: zs,ls,zzz	   p2:zs,ls,zzz
+        //console.log('p1: '+p1.frends.zzz + '\t   p2:'+p2.frends.zzz  );//   p1: zs,ls,zzz	   p2:zs,ls,zzz
+
+
+       // console.log( Person.prototype );
+
+
+        /*p2.sex='male';
+         console.log('2'+ p2.sex+'\n' );
+         console.log('2'+ p1.sex+'\n' );*/
+
+       /* var p2=new Person();
+        //这时Person还没有sayHi的方法
+        Person.prototype.sayHi=function(){
+            alert('hi');
+        }
+        p2.sayHi()//'hi'
+*/
+        /*var p1=new Person();
+        console.log( Person.prototype.constructor==Person );//false
+        console.log( p1.constructor==Person );//false
+        console.log( Person.prototype.constructor );//function Object(){}*/
+    </script>
+</body>
+</html>

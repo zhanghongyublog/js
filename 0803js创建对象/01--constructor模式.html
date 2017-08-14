@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>01--constructor</title>
+</head>
+<body>
+    <script typeof="text/javascript">
+        //构造函数  作用 用来初始化
+        function Person(name,age,job) {
+            this.name=name;
+            this.age=age;
+            this.job=job;
+            this.sayName=function () {
+                alert(this.name);
+            }
+        }
+
+        var person1=new Person('zhy',18,'SoftWare Engineer');
+        var person2=new Person('zhy2',19,'Doctor');
+        console.log(person1.sayName==person2.sayName);
+
+        //constrcutor
+        var p=new Person("张三",20);
+        document.write( 'p.constructor : <hr/>'+ p.constructor+"<br />");
+        //构造函数的源码
+
+
+        var p2=new Person("lisi",21);
+        document.write(  '<hr/>'+p2.name+"   "+p2.age+"<br />");
+        document.write(  p2.constructor+"<br /><br />");
+        //constrcutor里保存了，该构造方法的源码，new一下创建新对象，加（）激活
+
+
+    </script>
+</body>
+</html>

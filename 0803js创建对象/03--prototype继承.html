@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>03--prototype继承</title>
+</head>
+<body>
+    <script typeof="text/javascript">
+
+        function Person() {}
+
+        var p5=new Person();
+        Person.prototype={
+            constructor:Person,
+            name:'zhy',
+            age:29,
+            job:'SE',
+            sayName:function () {
+                alert(this.name);
+            }
+        }
+        var p3=new Person();
+        var p4=new Person();
+       // p3.sayName();
+        console.log( '1'+Person.prototype.constructor );
+        console.log('2'+ p3.constructor );
+        console.log('2'+ p3.constructor==Person.prototype.constructor );
+
+       /* var p2=new Person();
+        //这时Person还没有sayHi的方法
+        Person.prototype.sayHi=function(){
+            alert('hi');
+        }
+        p2.sayHi()//'hi'
+*/
+        /*var p1=new Person();
+        console.log( Person.prototype.constructor==Person );//false
+        console.log( p1.constructor==Person );//false
+        console.log( Person.prototype.constructor );//function Object(){}*/
+    </script>
+</body>
+</html>

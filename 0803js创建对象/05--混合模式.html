@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>05--混合模式</title>
+</head>
+<body>
+    <script typeof="text/javascript">
+
+        function Person(name,age,sex) {
+            this.name=name;
+            this.age=age;
+            this.sex=sex;
+            this.frends=['zs','ls'];
+        }
+
+        Person.prototype={
+            constructor:Person,
+            sayName:function () {
+                return (this.name);
+            }
+        }
+        var p1=new Person('zhy',18,'female');
+        var p2=new Person('zs',19,'male');
+
+        console.log(p1.sayName());
+
+        //p1.frends='12345';
+        //console.log('p1: '+p1.frends + '\t   p2:'+p2.frends  );//   p1: 12345	   p2:zs,ls
+
+        p1.frends.push('zzz');
+        console.log('p1: '+p1.frends + '\t   p2:'+p2.frends  );//   p1: zs,ls,zzz	   p2:zs,ls
+
+        console.log(p1.frends==p2.frends);//false
+        console.log(p1.sayName==p2.sayName);//true
+
+
+
+    </script>
+</body>
+</html>
