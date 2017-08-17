@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>01--原型链</title>
+</head>
+<body>
+    <script typeof="text/javascript">
+        function SuperType() {
+            this.property=true;
+        }
+        SuperType.prototype.getSuperValue=function () {
+            return this.property;
+        }
+
+        function SubType() {
+            this.subproperty=false;
+        }
+
+        //继承
+        SubType.prototype=new SuperType();
+
+        SubType.prototype.getSubValue=function () {
+            return this.subproperty;
+        }
+
+        var instance=new SubType();
+        console.log(SuperType.prototype);
+        /* getSuperValue: SuperType.prototype.getSuperValue()}
+        * constructor：SuperType();
+        * _proto_:Object
+        * */
+        //只有一个定义在原型对象上的函数，获取属性，还有个默认的constructor属性
+        console.log(SubType.prototype);
+        /* property: true,
+        * getSubValue: SubType.prototype.getSubValue()
+        * */
+        //property: true, getSubValue: SubType.prototype.getSubValue()
+        //SubType.prototype是SuperType的实例，所以拥有一个实例属性 property，
+        //默认的constructor属性被重写了
+
+
+        //console.log(instance.getSubValue());//false
+       // console.log(instance.getSuperValue());//true
+
+        //console.log(instance);
+        //subproperty: false
+        //只有个实例属性，但是本身上是没有任何函数的，所呈现出来的函数均是原型上或者
+        //原型链上的函数
+
+        //通过这种方式就叫做原型链继承
+    </script>
+</body>
+</html>

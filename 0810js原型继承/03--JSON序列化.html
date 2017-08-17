@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>03--JSON序列化</title>
+</head>
+<body>
+    <script type="text/javascript">
+        var book={
+            title:'JavaSript 高级编程',
+            authors:['zhy zhy2'],
+            edition:3,
+            year:2011
+        };
+
+        var jsonText=JSON.stringify(book);
+
+        console.log(jsonText);
+        //{"title":"JavaSript 高级编程","authors":["zhy zhy2"],"edition":3,"year":2011}
+        var bookCopy=JSON.parse(jsonText);
+        console.log('bookCopy: '+bookCopy==book);//false
+
+        /*序列化选项    第二个参数：过滤器 */
+
+        //第一种情况：  第二个参数形式是数组
+        var filterJsonTextArr=JSON.stringify(book,["title",'edition']);
+        console.log('filterJsonTextArr: '+filterJsonTextArr);
+        //{"title":"JavaSript 高级编程","edition":3}
+
+        //第二种情况：  第二个参数形式是函数，函数接收两个参数，属性和属性名
+        var filterJsonTextFun=JSON.stringify(book,function (key,value) {
+            switch(key){
+                case 'authors':
+                    return value.join(',');
+                case 'year':
+                    return undefined;
+                default:
+                    return value;
+            }
+        });
+        console.log('filterJsonTextFun: '+filterJsonTextFun);
+        // {"title":"JavaSript 高级编程","authors":"zhy zhy2","edition":3}
+        //当匹配到year时，返回一个undfined,JSON会自动忽略当前属性
+
+
+        /*第二个参数：字符串缩进   数字最大为10   超过10则定为10*/
+        var jsontext2=JSON.stringify(book,null,10);
+        console.log('jsontext2: '+jsontext2);
+
+    </script>
+</body>
+</html>
