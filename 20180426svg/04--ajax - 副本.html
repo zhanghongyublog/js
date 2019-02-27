@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>04--ajax</title>
+	<style>
+		.div{
+		position:relative;
+			width:200px;
+			height:200px;
+			color:red;
+			background-color:#83B9F7;
+			border-radius:100px;
+			overflow:hidden;
+		}
+		.test{
+			color:red;
+			position:absolute;
+			z-index:10;
+			top:100px;
+			left:50%;
+			transform:translateX(-50%);
+			animation:upanddown 2s infinite linear;
+		}
+		.div::before,.div::after{
+			content:'';
+			display:block;
+			position:absolute;
+			left:50%;
+			width:400px;
+			height:400px;
+			background-color:white;
+			
+			margin-left:-200px;
+			margin-top:-280px;
+			border-radius:46% 49% 48% 45%;
+			transform-origin:47% 49%;
+			animation:rotate 4s infinite linear;
+		}
+	.div::after{
+		margin-left:-190px;
+		opacity:0.8;
+		animation-duration:3s;
+	}
+	@keyframes rotate{
+		from{
+			transform:rotate(0deg);
+		}
+		to{
+			transform:rotate(360deg);
+		}
+	}
+	@keyframes upanddown{
+		0%{
+			top:92px;
+		}
+		50%{
+			top:108px;
+		}
+		100%{
+			top:92px;
+		}
+	}
+	</style>
+</head>
+<body>
+	<div class="div">
+		<div class="test">0000</div>
+	<div> 
+    
+</body>
+</html>
